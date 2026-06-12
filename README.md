@@ -33,9 +33,13 @@ Volliq is a computer vision pipeline designed for athletic performance analysis 
     └── test_synco.ipynb         # Jupyter notebook dedicated to aligning the 4 video feeds
 
 ```
-# Dataset Link: https://www.kaggle.com/datasets/nhwanigasingha/volliq-multiangle-volleyball-dataset/data
+## 📊 Dataset
 
-# Citation:
+The model is trained and tested on the custom **VoLLIQ - Multiangle Volleyball Dataset**. This dataset contains annotated multi-camera footage specifically tailored for multi-player tracking in volleyball. 
+
+* **Download the dataset here:** [Kaggle: VoLLIQ - Multiangle Volleyball Dataset](https://www.kaggle.com/datasets/nhwanigasingha/volliq-multiangle-volleyball-dataset/data)
+
+## Citation:
 ```
 @misc{n_h__wanigasingha_m_k_a__ariyaratne_r_m__silva_2026,
 	title={VoLLIQ - Multiangle Volleyball Dataset},
