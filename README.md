@@ -51,3 +51,15 @@ The model is trained and tested on the custom **VoLLIQ - Multiangle Volleyball D
 }
 ```
 ### License: CC BY-NC-SA 4.0
+
+## 📊 Dataset Configuration & Setup
+
+The **VoLLIQ - Multiangle Volleyball Dataset** is structured by Match  and Camera Angle (`AN01/`, `AN02/`...):
+
+```text
+VoLLIQ/
+├── M1/
+│   ├── AN01/
+│   │   ├── frames/   # Contains frame_0000.jpg...
+│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
+```
