@@ -1,0 +1,9 @@
+train: ./images/train
+val: ./images/val
+
+# no of classes
+
+nc: 3
+
+# class names
+names: ['Payer','Payer_B','Ball']

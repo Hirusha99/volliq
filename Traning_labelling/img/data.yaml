@@ -1,0 +1,13 @@
+path: E:/Hiru/data/volley-im-new/Implementation-volley/dataset
+train: E:/Hiru/data/volley-im-new/Implementation-volley/dataset/images/train
+val: E:/Hiru/data/volley-im-new/Implementation-volley/dataset/images/val
+
+
+
+# no of classes
+
+nc: 4
+
+# class names
+#names: ['Player_A','Player_B','Ball','Judge']
+names: ['Ball', 'Player_A', 'Judge', 'Player_B']
