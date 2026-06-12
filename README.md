@@ -72,57 +72,6 @@ VoLLIQ/
 │       ├── frames/   # Contains frame_0000.jpg...
 │       └── labels/   # Contains frame_0000.txt (YOLO format)
 ```
-## 💻 Usage Instructions
-
-Follow these steps in order to process your multi-camera videos, train the tracking model, and deploy the inference application.
-
-### Step 1: Synchronize Video Feeds
-Before running object detection, the video files from the four camera angles (`AN01`, `AN02`, `AN03`, `AN04`) must be temporally aligned.
-
-   Navigate to the synchronization directory:
-   ```bash
-   cd test-synconization
-```
-What it does: This notebook reads the raw video streams from all four angles, processes their alignment parameters (such as using audio signatures or specific start-frames), and outputs synchronized video frames or matched timestamps ready for tracking.
-
-
-
-# VolliQ 🏐
-
-VolliQ is a computer vision pipeline developed to track volleyball players using the YOLOv8 model and automatically synchronize video feeds from a multi-camera setup.
-
-## 📊 Dataset Configuration & Setup
-
-The model is trained and tested on the custom **VoLLIQ - Multiangle Volleyball Dataset**. This dataset contains annotated multi-camera footage specifically tailored for multi-player tracking in volleyball.
-
-**Download the dataset here:**
-[Kaggle: VoLLIQ - Multiangle Volleyball Dataset](https://www.kaggle.com/datasets/nhwanigasingha/volliq-multiangle-volleyball-dataset/data)
-
-### Dataset Structure
-
-```text
-VoLLIQ/
-├── M1/
-│   ├── AN01/
-│   │   ├── frames/   # Contains frame_0000.jpg...
-│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
-│   ├── AN02/
-│   │   ├── frames/
-│   │   └── labels/
-│   ├── AN03/
-│   │   ├── frames/
-│   │   └── labels/
-│   └── AN04/
-│       ├── frames/
-│       └── labels/
-├── M2/
-│   ├── AN01/
-│   ├── AN02/
-│   ├── AN03/
-│   └── AN04/
-```
-
----
 
 ## 🚀 Project Architecture
 
@@ -157,8 +106,12 @@ Contains:
 Used to perform player detection and tracking on synchronized volleyball footage.
 
 ---
+## 💻 Usage Instructions
 
-# 🛠️ Setup & Installation
+Follow these steps in order to process your multi-camera videos, train the tracking model, and deploy the inference application.
+
+
+## 🛠️ Setup & Installation
 
 It is recommended to use a virtual environment to manage project dependencies.
 
