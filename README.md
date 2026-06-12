@@ -62,4 +62,302 @@ VoLLIQ/
 │   ├── AN01/
 │   │   ├── frames/   # Contains frame_0000.jpg...
 │   │   └── labels/   # Contains frame_0000.txt (YOLO format)
+│   ├── AN02/
+│   │   ├── frames/   # Contains frame_0000.jpg...
+│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
+│   ├── AN03/
+│   │   ├── frames/   # Contains frame_0000.jpg...
+│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
+│   └── AN04/
+│       ├── frames/   # Contains frame_0000.jpg...
+│       └── labels/   # Contains frame_0000.txt (YOLO format)
 ```
+## 💻 Usage Instructions
+
+Follow these steps in order to process your multi-camera videos, train the tracking model, and deploy the inference application.
+
+### Step 1: Synchronize Video Feeds
+Before running object detection, the video files from the four camera angles (`AN01`, `AN02`, `AN03`, `AN04`) must be temporally aligned.
+
+   Navigate to the synchronization directory:
+   ```bash
+   cd test-synconization
+```
+What it does: This notebook reads the raw video streams from all four angles, processes their alignment parameters (such as using audio signatures or specific start-frames), and outputs synchronized video frames or matched timestamps ready for tracking.
+
+
+
+# VolliQ 🏐
+
+VolliQ is a computer vision pipeline developed to track volleyball players using the YOLOv8 model and automatically synchronize video feeds from a multi-camera setup.
+
+## 📊 Dataset Configuration & Setup
+
+The model is trained and tested on the custom **VoLLIQ - Multiangle Volleyball Dataset**. This dataset contains annotated multi-camera footage specifically tailored for multi-player tracking in volleyball.
+
+**Download the dataset here:**
+[Kaggle: VoLLIQ - Multiangle Volleyball Dataset](https://www.kaggle.com/datasets/nhwanigasingha/volliq-multiangle-volleyball-dataset/data)
+
+### Dataset Structure
+
+```text
+VoLLIQ/
+├── M1/
+│   ├── AN01/
+│   │   ├── frames/   # Contains frame_0000.jpg...
+│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
+│   ├── AN02/
+│   │   ├── frames/
+│   │   └── labels/
+│   ├── AN03/
+│   │   ├── frames/
+│   │   └── labels/
+│   └── AN04/
+│       ├── frames/
+│       └── labels/
+├── M2/
+│   ├── AN01/
+│   ├── AN02/
+│   ├── AN03/
+│   └── AN04/
+```
+
+---
+
+## 🚀 Project Architecture
+
+The repository is modularized into three core components to manage synchronization, training, and deployment.
+
+### 1. Training & Labeling (`Traning_labelling/`)
+
+Contains:
+
+* Dataset configuration (`data.yaml`)
+* Annotation scripts
+* Jupyter notebook (`train.ipynb`)
+
+Used to fine-tune the YOLOv8 model on custom volleyball court data.
+
+## 2. Synchronization (`test-synconization/`)
+
+Contains:
+
+* Experimental synchronization logic
+* Notebook: `test_synco.ipynb`
+
+Used to automatically align the four individual camera feeds into a synchronized timeline.
+
+## 3. Inference & Annotation Pipeline (`Annotation_pipeline/`)
+
+Contains:
+
+* Fine-tuned model weights (`best.pt`)
+* Main application script (`app.py`)
+
+Used to perform player detection and tracking on synchronized volleyball footage.
+
+---
+
+# 🛠️ Setup & Installation
+
+It is recommended to use a virtual environment to manage project dependencies.
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Hirusha99/volliq.git
+cd volliq
+```
+
+## 2. Create and Activate a Virtual Environment
+
+### Using venv (Standard Python)
+
+```bash
+python -m venv venv
+```
+
+#### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+#### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+## 3. Install Dependencies
+
+Because the project is modular, install the dependencies required for the component you are using.
+
+### Synchronization Module
+
+```bash
+pip install -r test-synconization/requirements.txt
+```
+
+### Training Module
+
+```bash
+pip install -r Traning_labelling/requirements.txt
+```
+
+### Inference Module
+
+```bash
+pip install -r Annotation_pipeline/model/requirements.txt
+```
+
+---
+
+# 💻 Step-by-Step Usage Guide
+
+Follow the workflow below to process raw volleyball footage and obtain player tracking results.
+
+---
+
+## Phase 1: Prepare and Synchronize Video Feeds
+
+Before tracking can begin, the four camera feeds must be synchronized.
+
+### Navigate to the Synchronization Module
+
+```bash
+cd test-synconization
+```
+
+### Launch the Notebook
+
+```bash
+jupyter notebook test_synco.ipynb
+```
+
+### Execute the Notebook
+
+Run all notebook cells. The synchronization pipeline:
+
+* Reads the raw video streams from camera angles AN01–AN04
+* Computes temporal alignment parameters
+* Synchronizes the video feeds
+* Exports synchronized videos or aligned frame directories
+
+### Verify Output
+
+Ensure the synchronized videos or frame folders have been generated successfully before proceeding.
+
+---
+
+## Phase 2: Train the YOLOv8 Model (Optional)
+
+> **Note:** If a trained `best.pt` model already exists, skip to Phase 3.
+
+### Download and Extract the Dataset
+
+Download the VoLLIQ dataset from Kaggle and extract it into:
+
+```text
+Traning_labelling/dataset/
+```
+
+### Navigate to the Training Module
+
+```bash
+cd ../Traning_labelling
+```
+
+### Verify Dataset Configuration
+
+Open:
+
+```text
+img/data.yaml
+```
+
+Ensure that all dataset paths correctly point to the extracted directories.
+
+### (Optional) Review or Modify Annotations
+
+```bash
+python labelling/labelling.py
+```
+
+### Launch Training
+
+```bash
+jupyter notebook train.ipynb
+```
+
+Run all cells to begin YOLOv8 training.
+
+Training duration depends on the available hardware and GPU resources.
+
+### Retrieve Trained Weights
+
+After training completes, locate:
+
+```text
+runs/train/weights/best.pt
+```
+
+This file contains the best-performing model weights.
+
+---
+
+## Phase 3: Run the Tracking Application
+
+Once the videos are synchronized and the model weights are ready, the tracking application can be executed.
+
+### Navigate to the Deployment Module
+
+```bash
+cd ../Annotation_pipeline/model
+```
+
+### Place Model Weights
+
+Copy your trained:
+
+```text
+best.pt
+```
+
+into:
+
+```text
+Annotation_pipeline/model/
+```
+
+Replace the existing model if necessary.
+
+### Run the Application
+
+```bash
+python app.py
+```
+
+### View Results
+
+The application will:
+
+1. Load the YOLOv8 model.
+2. Read the synchronized multi-camera video feeds.
+3. Detect volleyball players and the ball.
+4. Draw bounding boxes and tracking information.
+5. Display or save the annotated output.
+
+
+### 📌 Features
+
+* Multi-camera volleyball video synchronization
+* YOLOv8-based player and ball detection
+* Custom VoLLIQ volleyball dataset
+* End-to-end tracking pipeline
+* Modular training, synchronization, and deployment framework
+* Support for volleyball analytics and computer vision research
+
+
+
+
