@@ -72,6 +72,27 @@ VoLLIQ/
 │       ├── frames/   # Contains frame_0000.jpg...
 │       └── labels/   # Contains frame_0000.txt (YOLO format)
 ```
+### 📈 Dataset Statistics
+
+The VoLLIQ dataset contains four object classes annotated in YOLO format.
+
+* **Player_A** and **Player_B** dynamically classify on-court players into two distinct categories corresponding to the two opposing teams.
+* **Judge** refers to the up judge (first referee).
+* **Volleyball** denotes the match ball.
+
+#### Dataset Summary Statistics
+
+| Object Class | Total Bounding Boxes | Avg. Instances per Frame |
+| ------------ | -------------------: | -----------------------: |
+| Player_A     |              599,729 |                     6.01 |
+| Player_B     |              559,286 |                     5.61 |
+| Judge        |              100,134 |                     1.00 |
+| Volleyball   |               10,550 |                     0.10 |
+
+The dataset contains a total of **1,269,699 annotated bounding boxes** across the four object classes. The majority of annotations correspond to players, with **Player_A** and **Player_B** accounting for 599,729 and 559,286 bounding boxes, respectively. The **Judge** class contains 100,134 annotations, reflecting the consistent presence of the first referee within the field of view. The **Volleyball** class contains 10,550 annotations, making it the least represented class due to its relatively small size, high speed, and frequent occlusions during gameplay.
+
+On average, each frame contains approximately **6.01 Player_A instances**, **5.61 Player_B instances**, **1.00 Judge instance**, and **0.10 Volleyball instances**, illustrating the typical distribution of objects in volleyball match footage and the class imbalance inherent in sports video datasets.
+
 
 ## 🚀 Project Architecture
 
@@ -290,7 +311,7 @@ Replace the existing model if necessary.
 ```bash
 python app.py
 ```
-
+---
 ### View Results
 
 The application will:
@@ -301,7 +322,7 @@ The application will:
 4. Draw bounding boxes and tracking information.
 5. Display or save the annotated output.
 
-
+---
 ### 📌 Features
 
 * Multi-camera volleyball video synchronization
