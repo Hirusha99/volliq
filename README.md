@@ -1,4 +1,4 @@
-# Volliq 🏐
+# VolliQ 🏐
 
 Volliq is a computer vision pipeline designed for athletic performance analysis in volleyball. It automatically synchronizes video feeds from a four-camera setup and utilizes the YOLOv8 model to detect, track, and analyze player movements across the court.
 
@@ -31,3 +31,19 @@ Volliq is a computer vision pipeline designed for athletic performance analysis 
 └── test-synconization/
     ├── requirements.txt         # Dependencies for the 4-camera synchronization tasks
     └── test_synco.ipynb         # Jupyter notebook dedicated to aligning the 4 video feeds
+
+```
+# Dataset Link: https://www.kaggle.com/datasets/nhwanigasingha/volliq-multiangle-volleyball-dataset/data
+
+# Citation:
+```
+@misc{n_h__wanigasingha_m_k_a__ariyaratne_r_m__silva_2026,
+	title={VoLLIQ - Multiangle Volleyball Dataset},
+	url={https://www.kaggle.com/ds/10214908},
+	DOI={10.34740/KAGGLE/DS/10214908},
+	publisher={Kaggle},
+	author={N.H. Wanigasingha and M.K.A. Ariyaratne and R.M. Silva},
+	year={2026}
+}
+```
+### License: CC BY-NC-SA 4.0
