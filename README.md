@@ -23,7 +23,6 @@ Volliq is a computer vision pipeline designed for athletic performance analysis 
 │   ├── img/                     # Image storage
 │   ├── data.yaml                # Dataset configuration file for YOLOv8 training
 │   ├── labelling/
-│   │   ├── labelling.py         # Script used to generate or manage bounding box annotations
 │   │   └── read.md              # Documentation specific to the labeling process
 │   ├── runs/                    # YOLOv8 training output directories
 │   ├── requirements.txt         # Dependencies specific to model training
