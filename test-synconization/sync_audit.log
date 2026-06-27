@@ -1,0 +1,12 @@
+2026-06-05 22:11:18,379 - INFO - [AUDIT] - [PASS] Pair: v-data/AN01.mp4 <-> v-data/AN02.mp4 | Peak: 0.3196 | Lag: 0.1276s | Jitter: 0.0949s
+2026-06-05 22:11:42,073 - INFO - [AUDIT] - [PASS] Pair: v-data/AN01.mp4 <-> v-data/AN03.mp4 | Peak: 0.5177 | Lag: 0.1146s | Jitter: 0.0001s
+2026-06-05 22:12:05,959 - INFO - [AUDIT] - [PASS] Pair: v-data/AN01.mp4 <-> v-data/AN04.mp4 | Peak: 0.4082 | Lag: -0.0793s | Jitter: 0.0003s
+2026-06-05 22:12:30,135 - INFO - [AUDIT] - [PASS] Pair: v-data/AN02.mp4 <-> v-data/AN01.mp4 | Peak: 0.3196 | Lag: -0.1276s | Jitter: 0.0949s
+2026-06-05 22:12:53,776 - INFO - [AUDIT] - [PASS] Pair: v-data/AN02.mp4 <-> v-data/AN03.mp4 | Peak: 0.5202 | Lag: -0.0130s | Jitter: 0.0002s
+2026-06-05 22:13:17,431 - INFO - [AUDIT] - [PASS] Pair: v-data/AN02.mp4 <-> v-data/AN04.mp4 | Peak: 0.3058 | Lag: 0.0109s | Jitter: 0.0005s
+2026-06-05 22:13:41,378 - INFO - [AUDIT] - [PASS] Pair: v-data/AN03.mp4 <-> v-data/AN01.mp4 | Peak: 0.5177 | Lag: -0.1146s | Jitter: 0.0001s
+2026-06-05 22:14:04,948 - INFO - [AUDIT] - [PASS] Pair: v-data/AN03.mp4 <-> v-data/AN02.mp4 | Peak: 0.5202 | Lag: 0.0130s | Jitter: 0.0002s
+2026-06-05 22:14:28,747 - INFO - [AUDIT] - [PASS] Pair: v-data/AN03.mp4 <-> v-data/AN04.mp4 | Peak: 0.5232 | Lag: -0.1269s | Jitter: 0.0002s
+2026-06-05 22:14:52,755 - INFO - [AUDIT] - [PASS] Pair: v-data/AN04.mp4 <-> v-data/AN01.mp4 | Peak: 0.4082 | Lag: 0.0793s | Jitter: 0.0003s
+2026-06-05 22:15:16,437 - INFO - [AUDIT] - [PASS] Pair: v-data/AN04.mp4 <-> v-data/AN02.mp4 | Peak: 0.3058 | Lag: -0.0109s | Jitter: 0.0005s
+2026-06-05 22:15:40,363 - INFO - [AUDIT] - [PASS] Pair: v-data/AN04.mp4 <-> v-data/AN03.mp4 | Peak: 0.5232 | Lag: 0.1269s | Jitter: 0.0002s
