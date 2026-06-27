@@ -51,5 +51,13 @@ pip install labelImg
 ```bash
 labelImg
 ```
-The LabelImg annotation interface will open, and you can start labeling your images.
+---
+
+# LabelImg Manual Annotation Guide
+
+This guide explains how to install, open, and use **LabelImg** for creating manual image annotations.
+
+The provided ZIP file contains a video tutorial explaining the complete process of creating manual annotations using LabelImg.
+
+Link: https://drive.google.com/file/d/1o8bfTL4vGhkYxqjQEOOolm7DFoX7Neoq/view?usp=sharing
 ---
