@@ -1,5 +1,5 @@
 opencv-python
 inference[transformers,sam,clip,grounding-dino,yolo-world,gaze]
 supervision 
-roboflow
+
 
