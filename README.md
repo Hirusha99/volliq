@@ -11,8 +11,6 @@ Volliq is a computer vision pipeline designed for athletic performance analysis 
 
 ## 📁 Repository Structure
 
-## Repository Structure
-
 ```text
 volliq/
 │
