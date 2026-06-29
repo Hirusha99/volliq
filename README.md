@@ -11,26 +11,180 @@ Volliq is a computer vision pipeline designed for athletic performance analysis 
 
 ## 📁 Repository Structure
 
-```text
-├── Annotation_pipeline/
-│   └── model/
-│       ├── train24/             # Likely contains training run logs/weights
-│       ├── best.pt              # Your fine-tuned YOLOv8 weights for volleyball/player detection
-│       ├── app.py               # Main application script 
-│       └── requirements.txt     
-├── Traning_labelling/
-│   ├── dataset/                 # Raw/processed images for training
-│   ├── img/                     # Image storage
-│   ├── data.yaml                # Dataset configuration file for YOLOv8 training
-│   ├── labelling/
-│   │   └── read.md              # Documentation specific to the labeling process
-│   ├── runs/                    # YOLOv8 training output directories
-│   ├── requirements.txt         # Dependencies specific to model training
-│   └── train.ipynb              # Jupyter notebook for executing the YOLOv8 training loop
-└── test-synconization/
-    ├── requirements.txt         # Dependencies for the 4-camera synchronization tasks
-    └── test_synco.ipynb         # Jupyter notebook dedicated to aligning the 4 video feeds
+## Repository Structure
 
+```text
+volliq/
+│
+├── Annotation_pipeline/                         # Inference and annotation pipeline for the trained volleyball detection model
+│   │
+│   ├── app.py                                  # Main Python application used to run the annotation/inference pipeline
+│   ├── requirements.txt                        # Python dependencies required for the annotation pipeline
+│   │
+│   └── model/                                  # Stores trained YOLO model files and training output
+│       │
+│       ├── best.pt                             # Fine-tuned YOLO model weight file used for volleyball object detection
+│       │
+│       └── train24/                            # YOLO training result folder for one completed training run
+│           │
+│           ├── weights/                        # Stores trained model checkpoints
+│           │   ├── best.pt                     # Best-performing model checkpoint from the training run
+│           │   └── last.pt                     # Last saved model checkpoint from the training run
+│           │
+│           ├── BoxF1_curve.png                 # F1-score curve showing detection performance across confidence thresholds
+│           ├── BoxPR_curve.png                 # Precision-recall curve for bounding box detection
+│           ├── BoxP_curve.png                  # Precision curve for the trained detection model
+│           ├── BoxR_curve.png                  # Recall curve for the trained detection model
+│           ├── args.yaml                       # YOLO training configuration and hyperparameter settings
+│           ├── confusion_matrix.png            # Confusion matrix showing class-wise prediction performance
+│           ├── confusion_matrix_normalized.png # Normalized confusion matrix for easier comparison between classes
+│           ├── labels.jpg                      # Visualization of dataset label distribution
+│           ├── results.csv                     # Training and validation metrics recorded during training
+│           ├── results.png                     # Graphical summary of training results
+│           ├── train_batch0.jpg                # Sample training batch visualization
+│           ├── train_batch1.jpg                # Sample training batch visualization
+│           ├── train_batch2.jpg                # Sample training batch visualization
+│           ├── train_batch400.jpg              # Later-stage training batch visualization
+│           ├── train_batch401.jpg              # Later-stage training batch visualization
+│           ├── train_batch402.jpg              # Later-stage training batch visualization
+│           ├── val_batch0_labels.jpg           # Ground-truth labels from validation batch 0
+│           ├── val_batch0_pred.jpg             # Model predictions for validation batch 0
+│           ├── val_batch1_labels.jpg           # Ground-truth labels from validation batch 1
+│           └── val_batch1_pred.jpg             # Model predictions for validation batch 1
+│
+├── Test_files/                                 # Testing and validation files for annotation quality checking
+│   │
+│   ├── Readme.md                               # Documentation related to test files
+│   ├── test_annotation.ipynb                   # Notebook used to test or inspect annotation files
+│   │
+│   └── inter-annotator-agreement/              # Inter-annotator agreement validation module
+│       │
+│       ├── README.md                           # Explanation of agreement metrics and how to interpret the report
+│       ├── compare_annotations.py              # Python script for comparing annotation files from two annotators
+│       │
+│       └── final-annotation-comparison/        # Folder containing annotation comparison data and final report
+│           │
+│           ├── hirusha-annotations/            # Annotation files prepared by one annotator
+│           ├── rusiru-annotations/             # Annotation files prepared by another annotator
+│           └── agreement_report.txt            # Final inter-annotator agreement report generated by the comparison script
+│
+├── Traning_labelling/                          # Training and manual labelling module
+│   │
+│   ├── requirements.txt                        # Python dependencies required for YOLO training and labelling work
+│   ├── train.ipynb                             # Jupyter notebook used to train the YOLO model
+│   │
+│   ├── labelling/                              # Documentation for the labelling process
+│   │   └── read.md                             # Instructions or notes related to dataset labelling
+│   │
+│   ├── manually_annotated_dataset/             # Manually annotated volleyball dataset used for training
+│   │   │
+│   │   ├── data.yaml                           # YOLO dataset configuration file containing class names and dataset paths
+│   │   │
+│   │   ├── images/                             # Manually annotated volleyball frame images
+│   │   │   ├── A-E_frame_000000.jpg            # Example image frame used for YOLO training
+│   │   │   ├── A-E_frame_000030.jpg            # Example image frame used for YOLO training
+│   │   │   ├── A-E_frame_000060.jpg            # Example image frame used for YOLO training
+│   │   │   └── ...                             # Additional image frames follow the same naming pattern
+│   │   │
+│   │   └── labels/                             # YOLO annotation label files corresponding to the image frames
+│   │       ├── A-E_frame_000000.txt            # YOLO label file for A-E_frame_000000.jpg
+│   │       ├── A-E_frame_000030.txt            # YOLO label file for A-E_frame_000030.jpg
+│   │       ├── A-E_frame_000060.txt            # YOLO label file for A-E_frame_000060.jpg
+│   │       └── ...                             # Additional label files follow the same naming pattern
+│   │
+│   └── runs/                                   # YOLO output directory generated during training, prediction, and validation
+│       └── detect/                             # YOLO detection experiment outputs
+│           │
+│           ├── predict/                        # Prediction output directory generated by YOLO inference
+│           ├── train/                          # First YOLO training experiment output
+│           ├── train2/                         # Second YOLO training experiment output
+│           ├── train3/                         # Third YOLO training experiment output
+│           ├── train4/                         # Fourth YOLO training experiment output
+│           ├── train5/                         # Fifth YOLO training experiment output
+│           ├── train6/                         # Sixth YOLO training experiment output
+│           ├── train7/                         # Seventh YOLO training experiment output
+│           ├── train8/                         # Eighth YOLO training experiment output
+│           ├── train9/                         # Ninth YOLO training experiment output
+│           ├── train10/                        # Tenth YOLO training experiment output
+│           ├── train11/                        # Eleventh YOLO training experiment output
+│           ├── train12/                        # Twelfth YOLO training experiment output
+│           ├── train13/                        # Thirteenth YOLO training experiment output
+│           ├── train14/                        # Fourteenth YOLO training experiment output
+│           ├── train15/                        # Fifteenth YOLO training experiment output
+│           ├── train16/                        # Sixteenth YOLO training experiment output
+│           ├── train17/                        # Seventeenth YOLO training experiment output
+│           ├── train18/                        # Eighteenth YOLO training experiment output
+│           ├── train19/                        # Nineteenth YOLO training experiment output
+│           ├── train20/                        # Twentieth YOLO training experiment output
+│           ├── train21/                        # Twenty-first YOLO training experiment output
+│           ├── train22/                        # Twenty-second YOLO training experiment output
+│           ├── train23/                        # Twenty-third YOLO training experiment output
+│           ├── train24/                        # YOLO training experiment output selected for final model evaluation
+│           │   │
+│           │   ├── weights/                    # Model checkpoint folder
+│           │   │   ├── best.pt                 # Best model checkpoint from this training run
+│           │   │   └── last.pt                 # Last saved model checkpoint from this training run
+│           │   │
+│           │   ├── BoxF1_curve.png             # F1-score curve for the training run
+│           │   ├── BoxPR_curve.png             # Precision-recall curve for the training run
+│           │   ├── BoxP_curve.png              # Precision curve for the training run
+│           │   ├── BoxR_curve.png              # Recall curve for the training run
+│           │   ├── args.yaml                   # Training arguments and configuration
+│           │   ├── confusion_matrix.png        # Confusion matrix of model predictions
+│           │   ├── confusion_matrix_normalized.png # Normalized confusion matrix
+│           │   ├── labels.jpg                  # Dataset label visualization
+│           │   ├── results.csv                 # Epoch-wise training results
+│           │   ├── results.png                 # Graphical training result summary
+│           │   ├── train_batch0.jpg            # Training batch visualization
+│           │   ├── train_batch1.jpg            # Training batch visualization
+│           │   ├── train_batch2.jpg            # Training batch visualization
+│           │   ├── train_batch400.jpg          # Later-stage training batch visualization
+│           │   ├── train_batch401.jpg          # Later-stage training batch visualization
+│           │   ├── train_batch402.jpg          # Later-stage training batch visualization
+│           │   ├── val_batch0_labels.jpg       # Validation ground-truth labels
+│           │   ├── val_batch0_pred.jpg         # Validation model predictions
+│           │   ├── val_batch1_labels.jpg       # Validation ground-truth labels
+│           │   └── val_batch1_pred.jpg         # Validation model predictions
+│           │
+│           ├── train25/                        # Additional YOLO training experiment output
+│           │
+│           └── val-4/                          # YOLO validation output folder
+│               ├── BoxF1_curve.png             # Validation F1-score curve
+│               ├── BoxPR_curve.png             # Validation precision-recall curve
+│               ├── BoxP_curve.png              # Validation precision curve
+│               ├── BoxR_curve.png              # Validation recall curve
+│               ├── confusion_matrix.png        # Validation confusion matrix
+│               ├── confusion_matrix_normalized.png # Normalized validation confusion matrix
+│               ├── val_batch0_labels.jpg       # Ground-truth labels for validation batch 0
+│               ├── val_batch0_pred.jpg         # Predictions for validation batch 0
+│               ├── val_batch1_labels.jpg       # Ground-truth labels for validation batch 1
+│               ├── val_batch1_pred.jpg         # Predictions for validation batch 1
+│               ├── val_batch2_labels.jpg       # Ground-truth labels for validation batch 2
+│               └── val_batch2_pred.jpg         # Predictions for validation batch 2
+│
+├── test-synconization/                         # Audio/video synchronization testing module
+│   │
+│   ├── requirements.txt                        # Python dependencies required for synchronization testing
+│   ├── sync_audit.log                          # Log file containing synchronization audit details
+│   ├── test_synco.ipynb                        # Notebook used to test synchronization between camera views
+│   │
+│   ├── sync_plots/                             # Synchronization result plots for each camera view
+│   │   ├── offset_AN01.png                     # Synchronization offset plot for camera angle AN01
+│   │   ├── offset_AN02.png                     # Synchronization offset plot for camera angle AN02
+│   │   ├── offset_AN03.png                     # Synchronization offset plot for camera angle AN03
+│   │   └── offset_AN04.png                     # Synchronization offset plot for camera angle AN04
+│   │
+│   └── v_data/                                 # Sample video and extracted audio files used for synchronization testing
+│       ├── AN01.mp4                            # Video file from camera angle AN01
+│       ├── AN01.wav                            # Extracted audio file from AN01 video
+│       ├── AN02.mp4                            # Video file from camera angle AN02
+│       ├── AN02.wav                            # Extracted audio file from AN02 video
+│       ├── AN03.mp4                            # Video file from camera angle AN03
+│       ├── AN03.wav                            # Extracted audio file from AN03 video
+│       ├── AN04.mp4                            # Video file from camera angle AN04
+│       └── AN04.wav                            # Extracted audio file from AN04 video
+│
+└── README.md                                   # Main project documentation file
 ```
 ## 📊 Dataset
 
@@ -57,19 +211,28 @@ The **VoLLIQ - Multiangle Volleyball Dataset** is structured by Match  and Camer
 
 ```text
 VoLLIQ/
+│
 ├── M1/
 │   ├── AN01/
-│   │   ├── frames/   # Contains frame_0000.jpg...
-│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
+│   │   ├── frames/
+│   │   │      frame_000001.jpg
+│   │   │      frame_000002.jpg
+│   │   │      ...
+│   │   │
+│   │   └── labels/
+│   │          frame_000001.txt
+│   │          frame_000002.txt
+│   │          ...
+│   │
 │   ├── AN02/
-│   │   ├── frames/   # Contains frame_0000.jpg...
-│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
 │   ├── AN03/
-│   │   ├── frames/   # Contains frame_0000.jpg...
-│   │   └── labels/   # Contains frame_0000.txt (YOLO format)
 │   └── AN04/
-│       ├── frames/   # Contains frame_0000.jpg...
-│       └── labels/   # Contains frame_0000.txt (YOLO format)
+│
+├── M2/
+├── M3/
+├── metadata/
+├── benchmark/
+└── README.md
 ```
 ### 📈 Dataset Statistics
 
