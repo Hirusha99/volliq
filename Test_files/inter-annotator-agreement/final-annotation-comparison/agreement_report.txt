@@ -1,0 +1,31 @@
+============================================================
+ INTER-ANNOTATOR AGREEMENT REPORT
+============================================================
+Comparing Directories:
+  A: final-annotation-comparison/rusiru-annotations
+  B: final-annotation-comparison/hirusha-annotations
+
+File Overview:
+  Files in A:         329
+  Files in B:         330
+  Common files:       329
+  Only in B:          1 files (e.g. ['folder2_h_frame_00416.txt'])
+------------------------------------------------------------
+Annotation Metrics (IoU Threshold: 0.5):
+  Total annotations in A: 4226
+  Total annotations in B: 4187
+  Total matched boxes:    3966
+  Symmetric F1-score:     0.9428 (Agreement on object presence)
+  Average IoU of matches: 0.7734 (Localization agreement)
+  Label Agreement Rate:   99.39% (Classification agreement on matches)
+------------------------------------------------------------
+Unmatched Annotations Breakdown:
+  Ball            -> Unmatched in A: 21    | Unmatched in B: 27   
+  Player_B        -> Unmatched in A: 101   | Unmatched in B: 75   
+  Judge           -> Unmatched in A: 35    | Unmatched in B: 36   
+  Player_A        -> Unmatched in A: 103   | Unmatched in B: 83   
+------------------------------------------------------------
+Classification Label Mismatches:
+  A labeled 'Player_B' but B labeled 'Player_A': 14 times
+  A labeled 'Player_A' but B labeled 'Player_B': 10 times
+============================================================
