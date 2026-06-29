@@ -1,4 +1,0 @@
-Ball
-Player_B
-Judge
-Player_A
